@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Users</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: #fff;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: #f2709c;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #ff9472;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ff416c;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        tr:hover {
+            background-color: #ffe0e6;
+        }
+    </style>
+</head>
+<body>
+    <h2>All Users</h2>
+    <a href="{{ url_for('admin_dashboard') }}">⬅ Back to Dashboard</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Is Admin</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ 'Yes' if user.is_admin else 'No' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

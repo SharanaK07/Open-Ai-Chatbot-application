@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+            margin: 0;
+            padding: 20px;
+        }
+        .chat-box {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+        input[type=text] {
+            width: 75%;
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type=submit] {
+            padding: 10px 15px;
+            font-size: 16px;
+            background: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background: #3700b3;
+        }
+        .response {
+            margin-top: 20px;
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+        }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #6200ea;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-box">
+        <h2>Hello, {{ username }} 👋</h2>
+        <form method="POST" action="/chat">
+            <input type="text" name="message" placeholder="Type your message..." required>
+            <input type="submit" value="Send">
+        </form>
+        {% if response %}
+        <div class="response">
+            <strong>Namskara Guru:</strong> {{ response }}
+        </div>
+        {% endif %}
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
